@@ -47,3 +47,44 @@ DROP TABLE    Livros;
 -- EXCLUIR BANDO DE DADOS
 DROP DATABASE Biblioteca_Tarde;
 
+
+INSERT INTO Autores (NomeAutor)
+VALUES ('Jojo Moyes'),('John Green'),('Jeff Kinney'),('George Martin'),('J.K Rowling');
+
+
+INSERT INTO Generos (Nome)
+VALUES ('Romance'),('Terror'),('Ficçao'),('Humor'),('Suspense');
+
+INSERT INTO livros (Titulo,IdAutor,IdGenero)
+VALUES ('Aculpa e das Estrelas',2,1),
+       ('Depois de voce',1,3),
+	   ('Diario de um banana',3,4),
+	   ('A guerra dos tronos',5,5);
+
+UPDATE Generos
+SET Nome = 'Ficção Cientifica'
+WHERE IdGenero = 2
+
+DELETE FROM Livros
+WHERE IdLivro = 3;
+
+DELETE FROM Autores
+WHERE IdAutor = 3;
+
+--DQL
+
+SELECT NomeAutor FROM Autores
+
+
+SELECT Nome FROM Generos
+
+
+SELECT Titulo FROM Livros
+
+SELECT Titulo,IdAutor FROM Livros
+
+
+SELECT Titulo,IdGenero FROM Livros
+
+
+SELECT Titulo,IdAutor, IdGenero FROM Livros
