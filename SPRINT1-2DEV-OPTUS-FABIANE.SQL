@@ -61,7 +61,7 @@ CREATE TABLE TiposUsuario (
 
   --Excluir tabela
   DROP TABLE Estilos;
-e;
+
 
   --Excluir Banco de dados
   DROP DATABASE Albuns_Tarde;
@@ -215,20 +215,61 @@ ORDER BY Nome DESC
 
 
 --COUNT 
-
+--contar quantos artistas tem 
 SELECT COUNT (IdArtista) FROM Artistas;
 
-
-
-
-
+--selecionar os abuns do mesmo artista
 SELECT * FROM Albuns WHERE IdArtista = 2 ;
 
+--USANDO INER JOIN (JUNCAO DE DUAS OU MAIS TABELAS)
+SELECT Artistas.Nome, Albuns.Nome FROM Artistas
+INNER JOIN Albuns ON Artistas.IdArtista = Albuns.IdArtista
+WHERE Albuns.IdArtista = 3;
+
+
+--Selecionar os albuns lançados na mesma data
 SELECT * FROM Albuns WHERE Lancamento = '10/02/2020';
+
+--INNER JOIN 
+SELECT * FROM Artistas
+INNER JOIN Albuns ON Artistas.IdArtista = Albuns.IdArtista
+WHERE Lancamento = '10/02/2010';
+
+SELECT * FROM Artistas
+INNER JOIN Albuns ON Artistas.IdArtista = Albuns.IdArtista
+WHERE Lancamento = '10/02/2020';
+
 
 SELECT * FROM Albuns WHERE IdEstilo = 2 ;
 --Tenho somente um artista com o mesmo estilo musical 
 
+--selecionar artistas do mesmo estilo musical
+SELECT IdArtista,IdEstilo FROM Albuns WHERE IdEstilo = 2;
+
+
+SELECT Artistas.Nome as NomeArtista, Estilos.Nome
+FROM Artistas --pegar de uma tabela
+INNER JOIN Albuns ON Artistas.IdArtista = Albuns.IdArtista -- tabela 1
+INNER JOIN Estilos ON Albuns.IdEstilo = Estilos.IdEstilo  --tabela 2
+WHERE Estilos.IdEstilo =3; 
+
+
+
+
+
+--selecionar albuns e artistas e ordenar
+--por data de lancamento
+--(mais antigo para o mais recente)
+
 SELECT Nome,IdArtista, Lancamento  FROM Albuns
 ORDER BY Lancamento DESC 
+
+--COM JOIN
+SELECT Artistas.Nome as NomeArtista, Albuns.Nome as NomeAlbum --atributos com apelido
+FROM Artistas
+INNER JOIN Albuns ON Artistas.IdArtista = Albuns.IdArtista
+ORDER BY Lancamento  ASC;
+
+
+
 
