@@ -20,7 +20,16 @@ USE Clinica
 		 ('Jefferson','9999-9999',2,2);
 
   INSERT INTO  Raca(Titulo,IdTipoPet) 
-  VALUES ('Siamês',
+  VALUES ('Siamês',2),
+         ('Persa',2);
+
+
+ INSERT INTO  Atendimento(DataAtendimento,Descricao,IdVet,IdPet)
+  VALUES ('27/01/2020','Tudo em ordem',1,3),
+         ('28/01/2020','Doença grave detectada',1,4);
+
+
+
 
 
 
