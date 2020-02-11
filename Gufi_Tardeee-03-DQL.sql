@@ -43,7 +43,19 @@ SELECT Evento.NomeEvento,Evento.DataEvento,Evento.Descricao, Evento.IdEvento,
   END AS TipoAcesso
   FROM Evento;
 
-  
+
+
+SELECT Evento.NomeEvento , Evento.DataEvento, Evento.Descricao, Evento.AcessoLivre, Instituicao.CNPJ,Instituicao.NomeFantasia, Presenca.Situacao,Usuario.NomeUsuario
+,Usuario.DataNascimento, Usuario.Email, Usuario.Genero, TipoEvento.TituloTipoEvento,TipoUsuario.TituloTipoUsuario
+FROM Presenca
+INNER JOIN  Evento      on Evento.IdEvento = Presenca.IdEvento
+INNER JOIN  TipoEvento  on TipoEvento.IdTipoEvento = Evento.IdTipoEvento
+INNER JOIN	Instituicao on Instituicao.IdInstituicao = Evento.IdInstituicao
+INNER JOIN  Usuario     on Usuario.IdUsuario = Presenca.IdUsuario
+INNER JOIN  TipoUsuario on TipoUsuario.IdTipoUsuario = Usuario.IdTipoUsuario
+WHERE Usuario.IdTipoUsuario = 2
+AND Presenca.Situacao = 'Confimada';
+
 
 
 

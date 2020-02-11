@@ -12,10 +12,18 @@ USE Gufi_Tardeee;
   INSERT INTO Instituicao (CNPJ,NomeFantasia,Endereco)
   VALUES ('11111111111111','Escola SENAI de informatica','Alameda barão de Limeira,538');
 
+  INSERT INTO Instituicao (CNPJ,NomeFantasia,Endereco)
+  VALUES ('22222222222','Pacifico Fantastico','Alameda barão de Limeira,248');
+
   INSERT INTO Usuario (NomeUsuario,Email,Senha,Genero,DataNascimento,IdTipoUsuario)
   VALUES ('Administrador','adm@gmail.com','adm123','Não Informado','06/02/2020',1),
 		 ('Carol','carol@gmail.com','carol123','Feminino','06/02/2020',2),
 		 ('Saulo','Ssaulo@gmail.com','saulo123','Masculino','06/02/2020',2);
+
+  INSERT INTO Usuario (NomeUsuario,Email,Senha,Genero,DataNascimento,IdTipoUsuario)
+  VALUES  ('Fabiane','fabi@gmail.com','fabi123','Feminino','20/01/2003',2),
+		  ('Mayara','may@gmail.com','may123','Feminino','15/08/2003',2),
+		  ('Larissa','lari@gmail.com','Lari123','Feminino','31/08/2001',2);
 
   INSERT INTO Evento (NomeEvento,DataEvento,Descricao,AcessoLivre,IdInstituicao,IdTipoEvento)
   VALUES ('Introdução ao C#','07/02/2020','Conceitos sobre, os pilares da programação orientada a objetos',1,1,1),
