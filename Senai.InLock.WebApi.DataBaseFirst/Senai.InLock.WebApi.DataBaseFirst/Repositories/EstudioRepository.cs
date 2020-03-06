@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
 {
-    public class JogoRepository : IEstudioRepository
+    public class EstudioRepository : IEstudioRepository
     {
         InLockContext ctx = new InLockContext();
 
@@ -27,6 +27,29 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
        public Estudios BuscarPorId(int id)
         {
             return ctx.Estudios.FirstOrDefault(e => e.IdEstudio == id);
+        }
+
+        public void Deletar(int id)
+        {
+            ctx.Estudios.Remove(BuscarPorId(id));
+            ctx.SaveChanges();
+        }
+
+
+        public void AtualizarIdCorpo(int id, Estudios estudioAtualizado)
+        {
+            var estudioBuscado = BuscarPorId(id);
+
+            if(estudioBuscado != null)
+            {
+                estudioBuscado.NomeEstudio = estudioAtualizado.NomeEstudio;
+                //estudioBuscado.IdEstudio = estudioAtualizado.IdEstudio;
+                
+            }
+
+            ctx.Estudios.Update(estudioBuscado);
+            ctx.SaveChanges();
+
         }
     }
 }

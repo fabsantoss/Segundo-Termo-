@@ -7,41 +7,42 @@ using System.Threading.Tasks;
 
 namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
 {
-    public class JogoRepository : IJogoRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         InLockContext ctx = new InLockContext();
 
-        public void Cadastrar(Jogos novoJogo)
+        public void Cadastrar(Usuarios novoUsuario)
         {
-            ctx.Jogos.Add(novoJogo);
+            ctx.Usuarios.Add(novoUsuario);
             ctx.SaveChanges();
         }
 
-        public List<Jogos> Listar()
+        public List<Usuarios> Listar()
         {
-            return ctx.Jogos.ToList();
+            return ctx.Usuarios.ToList();
 
         }
 
-        public Jogos BuscarPorId(int id)
+        public Usuarios BuscarPorId(int id)
         {
-            return ctx.Jogos.FirstOrDefault(e => e.IdJogo == id);
+            return ctx.Usuarios.FirstOrDefault(e => e.IdUsuario == id);
         }
 
-        public void AtualizarIdCorpo(int id,Jogos jogoAtualizado)
+        public void AtualizarIdCorpo(int id,Usuarios UsuarioAtualizado)
         {
 
 
-            ctx.Jogos.Update(jogoAtualizado);
+            ctx.Usuarios.Update(UsuarioAtualizado);
             ctx.SaveChanges();
 
         }
-
 
         public void Deletar(int id)
         {
-            ctx.Jogos.Remove(BuscarPorId(id));
+            ctx.Usuarios.Remove(BuscarPorId(id));
             ctx.SaveChanges();
         }
+
+
     }
 }

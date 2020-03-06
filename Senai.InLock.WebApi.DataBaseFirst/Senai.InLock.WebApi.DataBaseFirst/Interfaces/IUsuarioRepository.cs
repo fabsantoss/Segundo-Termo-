@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Senai.InLock.WebApi.DataBaseFirst.Interfaces
 {
-    interface IJogoRepository
+    interface IUsuarioRepository
     {
-        List<Jogos> Listar();
+        Usuarios BuscarPorId(int IdUsuario);
 
-        Jogos BuscarPorId(int id);
+        List<Usuarios> Listar();
 
-        void Cadastrar(Jogos novoJogo);
+        void Cadastrar(Usuarios novoUsuario);
 
-        void AtualizarIdCorpo(int id, Jogos jogosjogoAtualizado);
+        void AtualizarIdCorpo(int id,Usuarios UsuarioAtualizado);
 
         void Deletar(int id);
     }

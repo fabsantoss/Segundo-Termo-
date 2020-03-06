@@ -19,7 +19,7 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
 
         public EstudiosController()
         {
-            _estudioRepository = new JogoRepository();
+            _estudioRepository = new EstudioRepository();
         }
 
         [HttpGet]
@@ -39,11 +39,21 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
         {
             _estudioRepository.Cadastrar(novoEstudio);
 
-            return StatusCode(2001);
+            return StatusCode(201);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            // Faz a chamada para o método .Deletar();
+            _estudioRepository.Deletar(id);
+
+            // Retorna um status code com uma mensagem personalizada
+            return Ok("Estudio deletado");
         }
 
 
-    
-         
+
+
     }
 }

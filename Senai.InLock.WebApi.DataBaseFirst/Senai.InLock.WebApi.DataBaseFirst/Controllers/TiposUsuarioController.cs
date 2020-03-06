@@ -13,45 +13,45 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
     [Route("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class JogosController : ControllerBase
+    public class TiposUsuarioController : ControllerBase
     {
-        private IJogoRepository _jogoRepository;
+        private ITipoUsuarioRepository _tipoUsuarioRepository;
 
-        public JogosController()
+        public TiposUsuarioController()
         {
-            _jogoRepository = new JogoRepository();
+            _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
         [HttpGet]
-        public List<Jogos> Get()
+        public List<TiposUsuario> Get()
         {
-            return _jogoRepository.Listar();
+            return _tipoUsuarioRepository.Listar();
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_jogoRepository.BuscarPorId(id));
+            return Ok(_tipoUsuarioRepository.BuscarPorId(id));
         }
 
         [HttpPost]
-        public IActionResult Post(Jogos novoJogo)
+        public IActionResult Post(TiposUsuario novoTipoUsuario)
         {
-            _jogoRepository.Cadastrar(novoJogo);
+            _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
 
             return StatusCode(201);
         }
 
         [HttpPut]
-        public IActionResult PutIdCorpo(int id,Jogos jogoAtualizado)
+        public IActionResult PutIdCorpo(int id,TiposUsuario TipoUsuarioAtualizado)
         {
-            Jogos jogoBuscado = _jogoRepository.BuscarPorId(jogoAtualizado.IdJogo);
+            TiposUsuario tiposUsuarioBuscado = _tipoUsuarioRepository.BuscarPorId(TipoUsuarioAtualizado.IdTipoUsuario);
 
-            if(jogoBuscado != null)
+            if (tiposUsuarioBuscado != null)
             {
                 try
                 {
-                    _jogoRepository.AtualizarIdCorpo(id,jogoAtualizado);
+                    _tipoUsuarioRepository.AtualizarIdCorpo(id,TipoUsuarioAtualizado);
 
                     return NoContent();
                 }
@@ -61,26 +61,26 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
                     return BadRequest(erro);
                 }
             }
-
             return NotFound
-               (
-                new
-                {
-                    mensagem ="Jogo não encontrado",
-                    erro = true
-                }
-
-                );
+           (
+            new
+            {
+                mensagem = "TipoUsuario não encontrado",
+                erro = true
             }
+
+            );
+        }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             // Faz a chamada para o método .Deletar();
-            _jogoRepository.Deletar(id);
+            _tipoUsuarioRepository.Deletar(id);
 
             // Retorna um status code com uma mensagem personalizada
-            return Ok("Jogo deletado");
+            return Ok("TipoUsuario deletado");
         }
     }
+
     }
