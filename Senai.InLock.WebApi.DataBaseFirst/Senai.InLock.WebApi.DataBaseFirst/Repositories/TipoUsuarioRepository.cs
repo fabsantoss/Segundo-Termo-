@@ -28,23 +28,24 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
             return ctx.TiposUsuario.FirstOrDefault(e => e.IdTipoUsuario == IdTipoUsuario);
         }
 
-        public void AtualizarIdCorpo(int id,TiposUsuario TipoUsuarioAtualizado)
-        {
-
-
-            ctx.TiposUsuario.Update(TipoUsuarioAtualizado);
-            ctx.SaveChanges();
-
-        }
-
         public void Deletar (int id)
         {
             ctx.TiposUsuario.Remove(BuscarPorId(id));
             ctx.SaveChanges();
         }
 
-      
+        public void Atualizar(int id, TiposUsuario tipoUsuarioAtualizado)
+        {
+            TiposUsuario tipoUsuarioBuscado = ctx.TiposUsuario.Find(id);
 
+            // Atribui o novo valor ao campo
+            tipoUsuarioBuscado.Tipo = tipoUsuarioAtualizado.Tipo;
 
+            // Atualiza o tipo de usuário que foi buscado
+            ctx.TiposUsuario.Update(tipoUsuarioBuscado);
+
+            // Salva as informações para serem gravadas no banco
+            ctx.SaveChanges();
+        }
     }
 }

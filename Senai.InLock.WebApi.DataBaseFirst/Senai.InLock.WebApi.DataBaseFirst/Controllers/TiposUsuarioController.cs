@@ -51,7 +51,7 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
             {
                 try
                 {
-                    _tipoUsuarioRepository.AtualizarIdCorpo(id,TipoUsuarioAtualizado);
+                    _tipoUsuarioRepository.Atualizar(id,TipoUsuarioAtualizado);
 
                     return NoContent();
                 }

@@ -1,4 +1,5 @@
-﻿using Senai.InLock.WebApi.DataBaseFirst.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.InLock.WebApi.DataBaseFirst.Domains;
 using Senai.InLock.WebApi.DataBaseFirst.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -36,20 +37,23 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
         }
 
 
-        public void AtualizarIdCorpo(int id, Estudios estudioAtualizado)
+        public void Atualizar(int id, Estudios estudioAtualizado)
         {
-            var estudioBuscado = BuscarPorId(id);
+            Estudios estudioBuscado = ctx.Estudios.Find(id);
 
-            if(estudioBuscado != null)
-            {
-                estudioBuscado.NomeEstudio = estudioAtualizado.NomeEstudio;
-                //estudioBuscado.IdEstudio = estudioAtualizado.IdEstudio;
-                
-            }
+            // Atribui os novos valores ao campos existentes
+            estudioBuscado.NomeEstudio = estudioAtualizado.NomeEstudio;
 
+            // Atualiza o estúdio que foi buscado
             ctx.Estudios.Update(estudioBuscado);
-            ctx.SaveChanges();
 
+            // Salva as informações para serem gravadas no banco
+            ctx.SaveChanges();
+        }
+
+        public List<Estudios> ListarJogos()
+        {
+            return ctx.Estudios.Include(e => e.Jogos).ToList();
         }
     }
 }

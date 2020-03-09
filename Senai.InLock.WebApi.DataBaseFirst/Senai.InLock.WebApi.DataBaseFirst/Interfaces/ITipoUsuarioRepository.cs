@@ -14,7 +14,7 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Interfaces
 
         void Cadastrar(TiposUsuario novoTipoUsuario);
 
-        void AtualizarIdCorpo(int id,TiposUsuario TipoUsuarioAtualizado);
+        void Atualizar(int id, TiposUsuario tipoUsuarioAtualizado);
 
         void Deletar(int id);
        

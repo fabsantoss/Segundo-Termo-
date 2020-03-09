@@ -28,14 +28,6 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
             return ctx.Usuarios.FirstOrDefault(e => e.IdUsuario == id);
         }
 
-        public void AtualizarIdCorpo(int id,Usuarios UsuarioAtualizado)
-        {
-
-
-            ctx.Usuarios.Update(UsuarioAtualizado);
-            ctx.SaveChanges();
-
-        }
 
         public void Deletar(int id)
         {
@@ -43,6 +35,21 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Repositories
             ctx.SaveChanges();
         }
 
+        public void Atualizar(int id, Usuarios usuarioAtualizado)
+        {
+            // Busca um usuário através do id
+            Usuarios usuarioBuscado = ctx.Usuarios.Find(id);
 
+            // Atribui os novos valores ao campos existentes
+            usuarioBuscado.Email = usuarioAtualizado.Email;
+            usuarioBuscado.Senha = usuarioAtualizado.Senha;
+            usuarioBuscado.IdTipoUsuario = usuarioAtualizado.IdTipoUsuario;
+
+            // Atualiza o usuário que foi buscado
+            ctx.Usuarios.Update(usuarioBuscado);
+
+            // Salva as informações para serem gravadas no banco
+            ctx.SaveChanges();
+        }
     }
 }

@@ -51,7 +51,7 @@ namespace Senai.InLock.WebApi.DataBaseFirst.Controllers
             {
                 try
                 {
-                    _jogoRepository.AtualizarIdCorpo(id,jogoAtualizado);
+                    _jogoRepository.Atualizar(id,jogoAtualizado);
 
                     return NoContent();
                 }
